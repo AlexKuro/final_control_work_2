@@ -1,0 +1,24 @@
+	Комманды из консоли.
+
+	Задание 1.
+   1  cat > Pets
+   2  cat Pets
+   3  cat > pack_animals
+   4  car pack_animals
+   5  cat Pets pack_animals > Human_Friends 
+   6  cat Human_Friends
+   7  mv Human_Friends Friends_Human
+   8  mkdir Animal
+	Задание 2.
+   9  mv Friends_Human pack_animals Pets /home/alexkuro/gb_control/gb_task_1/Animal/
+	Задание 3.  
+  10  sudo apt upgrade
+  11  sudo apt install mariadb-server
+  12  sudo mysql_secure_installation
+  13  sudo mysql -u root -p
+	Задание 4.
+  14  sudo wget https://download.virtualbox.org/virtualbox/7.0.8/virtualbox-7.0_7.0.8-156879~Ubuntu~jammy_amd64.deb
+  15  sudo dpkg -i virtualbox-7.0_7.0.8-156879~Ubuntu~jammy_amd64.deb
+  16  sudo apt -f install
+  17  sudo wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --dearmor --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg
+  18  sudo dpkg -r virtualbox-7.0
