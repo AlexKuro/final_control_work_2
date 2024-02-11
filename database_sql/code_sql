@@ -1,0 +1,39 @@
+CREATE DATABASE human_friends;
+
+SHOW DATABASES;
+
+USE human_friends;
+
+CREATE TABLE pets (id SERIAL PRIMARY KEY, class VARCHAR(50) COMMENT 'тип домашнего животного' );
+
+INSERT INTO pets (id, class) VALUES (1, 'Собака'), (2, 'Кошка'), (3, 'Хомяк');
+
+CREATE TABLE pack_animals (id SERIAL PRIMARY KEY, class VARCHAR(50) COMMENT 'тип домашнего животного' );
+
+INSERT INTO pack_animal (id, class) VALUES (1, 'Лошадь'), (2, 'Верблюд'), (3, 'Осел');
+
+CREATE TABLE profile_pets (pets_id SERIAL PRIMARY KEY, class_id BIGINT UNSIGNED, name VARCHAR(50), commands VARCHAR(80), birthday DATE, FOREIGN KEY (class_id) REFERENCES pets(id) ON UPDATE CASCADE ON DELETE CASCADE);
+
+INSERT INTO profile_pets (pets_id, class_id, name, commands, birthday) VALUES (1, 1, 'Белли', 'лежать', '2023-12-22'), (2, 1, 'Жуля', 'голос', '2023-06-23'), (3, 1, 'Смурф', 'бежать', '2019-07-24'), (4, 2, ‘Алиса’, ‘стоять’, '2020-10-25’), (5, 2, ‘Лорд’, ‘прыгать’, '2022-09-26’), (6, 2, ‘Мурка’, ‘лежать’, '2023-12-03’),(7, 3, ‘Чили’, ‘есть’, '2020-06-24’),(8, 3, ‘Миша’, ‘искать’, '2023-06-24’),(9, 3, ‘Крош’, ‘спать’, '2021-03-30’);
+
+CREATE TABLE profile_packAnimals (pack_animals_id SERIAL PRIMARY KEY, class_id BIGINT UNSIGNED, name VARCHAR(50), commands VARCHAR(80), birthday DATE, FOREIGN KEY (class_id) REFERENCES pets(id) ON UPDATE CASCADE ON DELETE CASCADE);
+
+INSERT INTO profile_packAnimals (pack_animals_id, class_id, name, commands, birthday) VALUES (1, 1, ‘Аристократ, ‘тшшш’, '2022-12-23’), (2, 1, ‘Граф’, ‘стой’, '2023-06-23'), (3, 1, ‘Герцог’, ‘вперед’, '2024-07-19’), (4, 2, ‘Алиса’, ‘стоять’, '2020-10-25’), (5, 2, ‘Лорд’, ‘прыгать’, '2022-09-26’), (6, 2, ‘Мурка’, ‘лежать’, '2023-12-03’),(7, 3, ‘Меркурий’, ‘но’, '2020-06-05’),(8, 3, ‘Сапсан’, ‘бег’, '2023-06-24’),(9, 3, ‘Венера’, ‘назад’, '2021-03-30’);
+
+DELETE FROM pack_animal WHERE class = ‘верблюд’;
+
+SELECT class_id, name, ROUND ((PERIOD_DIFF(DATE_FORMAT(CURRENT_DATE, '%Y%m'), DATE_FORMAT(birthday, '%Y%m'))/12), 1) AS age FROM profile_pets, profile_pets INNER JOIN pets ON profile_pets.class_id = pets.id;
+
+SELECT class, name, ROUND ((PERIOD_DIFF(DATE_FORMAT(CURRENT_DATE, '%Y%m'), DATE_FORMAT(birthday, '%Y%m'))/12), 1) AS age FROM profile_pets INNER JOIN pets ON profile_pets.class_id = pets.id WHERE PERIOD_DIFF(DATE_FORMAT(CURRENT_DATE, '%Y%m'), DATE_FORMAT(birthday, '%Y%m')) > 12 AND PERIOD_DIFF(DATE_FORMAT(CURRENT_DATE, '%Y%m'), DATE_FORMAT(birthday, '%Y%m')) <36;
+
+CREATE TABLE young_animals1 AS  SELECT class, name, ROUND ((PERIOD_DIFF(DATE_FORMAT(CURRENT_DATE, '%Y%m'), DATE_FORMAT(birthday, '%Y%m'))/12), 1) AS age FROM profile_pets INNER JOIN pets ON profile_pets.class_id = pets.id WHERE PERIOD_DIFF(DATE_FORMAT(CURRENT_DATE, '%Y%m'), DATE_FORMAT(birthday, '%Y%m')) > 12 AND PERIOD_DIFF(DATE_FORMAT(CURRENT_DATE, '%Y%m'), DATE_FORMAT(birthday, '%Y%m')) <36;
+
+SELECT class, name, ROUND ((PERIOD_DIFF(DATE_FORMAT(CURRENT_DATE, '%Y%m'), DATE_FORMAT(birthday, '%Y%m'))/12), 1) AS age FROM profile_packAnimals INNER JOIN pack_animals ON profile_packAnimals.class_id = pack_animals.id WHERE PERIOD_DIFF(DATE_FORMAT(CURRENT_DATE, '%Y%m'), DATE_FORMAT(birthday, '%Y%m')) > 12 AND PERIOD_DIFF(DATE_FORMAT(CURRENT_DATE, '%Y%m'), DATE_FORMAT(birthday, '%Y%m')) <36;
+
+CREATE TABLE young_animals2 AS  SELECT class, name, ROUND ((PERIOD_DIFF(DATE_FORMAT(CURRENT_DATE, '%Y%m'), DATE_FORMAT(birthday, '%Y%m'))/12), 1) AS age FROM profile_packAnimals INNER JOIN pack_animals ON profile_packAnimals.class_id = pack_animals.id WHERE PERIOD_DIFF(DATE_FORMAT(CURRENT_DATE, '%Y%m'), DATE_FORMAT(birthday, '%Y%m')) > 12 AND PERIOD_DIFF(DATE_FORMAT(CURRENT_DATE, '%Y%m'), DATE_FORMAT(birthday, '%Y%m')) <36;
+
+CREATE TABLE young_animals LIKE young_animals1;
+INSERT INTO young_animals SELECT * FROM young_animals1;
+
+REPLACE INTO young_animals SELECT * FROM young_animals2;
+
