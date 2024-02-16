@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @Data
 @AllArgsConstructor
@@ -22,6 +23,10 @@ public class FileJson implements ViewInterface {
     String pathProject = System.getProperty("user.dir");
     String pathFile = pathProject.concat("/file.json");
     File file = new File(pathFile);
+    private Boolean flagFillingErrorList = false;
+
+    private String fillingErrorList = "";
+
 
     public void fileDataJson() {
         try {
@@ -35,8 +40,9 @@ public class FileJson implements ViewInterface {
         } catch (IOException e) {
             log.setLogger("Ошибка при вводе/выводе данных из файла!");
             e.printStackTrace();
+        } finally {
+            animalCount = (long) data.get("animalCount");
         }
-        animalCount = (long) data.get("animalCount");
     }
 
     public void readFile() {
@@ -49,11 +55,54 @@ public class FileJson implements ViewInterface {
         }
     }
 
+    public void setFillingErrorList(String fillingErrorList) {
+        this.fillingErrorList += fillingErrorList;
+    }
+
     public void writeFile() {
         try (FileWriter fileWriter = new FileWriter(file)) {
-            fileWriter.write(data.toJSONString());
+            if (fillingErrorList.length() > 0) {
+                throw new RuntimeException("Ошибка при заполнении карточки. \n" + fillingErrorList);
+            } else {
+
+                fileWriter.write(data.toJSONString());
+            }
+        } catch (RuntimeException e) {
+            log.setLogger(e.getMessage());
+            System.out.println(e.getMessage());
+            flagFillingErrorList = true;
+            fillingErrorList = "";
+            System.out.println("Заполните карточку занова, с учетом допущенных ошибок.");
         } catch (IOException e) {
-            log.setLogger("Ошибка при вводе/выводе данных из файла!");
+            log.setLogger(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void AddWriteFile(String key, java.util.Map<String, Object> value) {
+        try (FileWriter fileWriter = new FileWriter(file)) {
+            if (fillingErrorList.length() > 0) {
+                data.remove(key);
+                fileWriter.write(data.toJSONString());
+                throw new RuntimeException("\n\t---------------------------------------------"
+                        + "\n"
+                        + "Ошибка при заполнении карточки. \n" + fillingErrorList
+                        + "\t---------------------------------------------");
+            } else {
+                data.put(key, value);
+                data.put("animalCount", animalCount + 1);
+                fileWriter.write(data.toJSONString());
+                animalCount = (long) data.get("animalCount");
+                System.out.println("Запись сохранена.");
+            }
+        } catch (RuntimeException e) {
+            log.setLogger(e.getMessage());
+            System.out.println(e.getMessage());
+            flagFillingErrorList = true;
+            fillingErrorList = "";
+            System.out.println("Заполните карточку заново, с учетом допущенных ошибок.\n");
+        } catch (IOException e) {
+            log.setLogger(e.getMessage());
             e.printStackTrace();
         }
     }

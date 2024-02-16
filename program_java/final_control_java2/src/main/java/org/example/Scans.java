@@ -13,12 +13,22 @@ public class Scans implements ViewInterface {
         System.out.println("\tВьючные животные  - - - - - - - - нажмите '2'");
         System.out.print("Введите число -> ");
         // нужна проверка
-        return stringScanner.nextLine();
+        String check = stringScanner.nextLine();
+        if (!check.matches("[12]")) {
+            String s = "- Класс задан не верно. Необходимо ввести число '1' или '2'. Введено: " + check + "\n";
+            fileJson.setFillingErrorList(s);
+        }
+        return check;
     }
 
     public String scan_3() {
         System.out.print("2. Введите тип животного (собака, кошка, лошадь ...) -> ");
-        return stringScanner.nextLine();
+        String check = stringScanner.nextLine();
+        if (check.length() < 2) {
+            String s = "- Тип животного задан не верно. Введено: " + check + "\n";
+            fileJson.setFillingErrorList(s);
+        }
+        return check;
     }
 
     public String scan_4() {
@@ -28,12 +38,22 @@ public class Scans implements ViewInterface {
                  \tукажите 'беспородная', при смешанной породе укажите 'метис'.
                 """);
         System.out.print("Введите породу животного -> ");
-        return stringScanner.nextLine();
+        String check = stringScanner.nextLine();
+        if (check.length() < 3) {
+            String s = "- Порода животного задана не верно. Введено: " + check + "\n";
+            fileJson.setFillingErrorList(s);
+        }
+        return check;
     }
 
     public String scan_5() {
         System.out.print("4. Введите пол животного, формат записи 'М' или 'Ж' -> ");
-        return stringScanner.nextLine();
+        String check = stringScanner.nextLine();
+        if (!(check.matches("[МЖ]") | check.matches("[мж]"))) {
+            String s = "- Пол животного задан не верно, формат записи 'М' или 'Ж'. Введено: " + check + "\n";
+            fileJson.setFillingErrorList(s);
+        }
+        return check;
     }
 
     public String scan_6() {
@@ -45,6 +65,15 @@ public class Scans implements ViewInterface {
         System.out.print("5. Введите прочию информацио о животном -> ");
         return stringScanner.nextLine();
     }
+
+    public String scan_8() {
+        System.out.println("Для продолжения выберите действия:");
+        System.out.println("\tРедактировать карточку  - - - - - нажмите '1'");
+        System.out.println("\tВыход в главное меню  - - - - - - нажмите '2'");
+        System.out.print("Введите число -> ");
+        return stringScanner.nextLine();
+    }
+
     public String scan_10(Integer num) {
         boolean fl = true;
         String n;
@@ -68,4 +97,5 @@ public class Scans implements ViewInterface {
         } while (fl);
         return n;
     }
+
 }

@@ -1,5 +1,6 @@
 package org.example;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.simple.JSONObject;
 
 import java.util.HashSet;
@@ -33,10 +34,12 @@ public class PrintData implements ViewInterface {
         String sex = "sex";
         String birthday = "birthday";
         String other = "other";
+        String a = (String) ((JSONObject) fileJson.getData().get(s)).get(classAn);
+
         System.out.println("\t--------------------- " + i + " ---------------------");
         System.out.println("\t   Номер клейма животного: " + ((JSONObject) fileJson.getData().get(s)).get(stamp_number));
         System.out.println("\tДата регистрации карточки: " + date);
-        System.out.println("\t          Класс животного: " + ((JSONObject) fileJson.getData().get(s)).get(classAn));
+        System.out.println("\t          Класс животного: " + classAnimal(a));
         System.out.println("\t            Тип животного: " + ((JSONObject) fileJson.getData().get(s)).get(type));
         System.out.println("\t         Порода животного: " + ((JSONObject) fileJson.getData().get(s)).get(breed));
         System.out.println("\t            Пол животного: " + ((JSONObject) fileJson.getData().get(s)).get(sex));
@@ -54,4 +57,12 @@ public class PrintData implements ViewInterface {
         System.out.println("\t---------------------------------------------");
     }
 
+    static String classAnimal(@NotNull String a) {
+        if (a.equals("1")) {
+            return "Домашние животное";
+        } else if (a.equals("2")) {
+            return "Вьючное животное";
+        }
+        return "Не определено";
+    }
 }
