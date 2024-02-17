@@ -140,18 +140,15 @@ public class Scans implements ViewInterface {
 
     boolean checkScan_6(@NotNull String s) {
         boolean fl;
-        int index0, index1, index2;
+        int[] ind = new int[3];
         String[] ss = s.split("-");
-
         if (ss.length == 3) {
             fl = ss[0].matches("[0-9]+") & ss[1].matches("[0-9]+") & ss[2].matches("[0-9]+");
         } else fl = false;
 
         if (fl) {
-            index0 = Integer.parseInt(ss[0]);
-            index1 = Integer.parseInt(ss[1]);
-            index2 = Integer.parseInt(ss[2]);
-            fl = (index0 > 1998 & index0 <= 2024) & (index1 >= 1 & index1 <= 12) & (index2 >= 1 & index2 <= 31);
+            for (int i = 0; i < ss.length; i++) ind[i] = Integer.parseInt(ss[i]);
+            fl = (ind[0] > 1998 & ind[0] <= 2024) & (ind[1] >= 1 & ind[1] <= 12) & (ind[2] >= 1 & ind[2] <= 31);
         }
         return fl;
     }
