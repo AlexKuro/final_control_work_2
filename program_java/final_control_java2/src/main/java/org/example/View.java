@@ -32,7 +32,7 @@ public class View implements ViewInterface{
         System.out.println(viewSign.SignField(getFieldNum()));
         System.out.println("\tДобавление животного  - - - - - - нажмите '1'");
         System.out.println("\tВыход из программы  - - - - - - - нажмите '9'");
-        return SCANS.scan_1();
+        return SCANS.scan_0();
     }
 
     public void interface_1() {

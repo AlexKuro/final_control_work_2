@@ -1,10 +1,41 @@
 package org.example;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Scans implements ViewInterface {
 
     public Integer scan_1() {
-        System.out.print("\nВведите число -> ");
-        return intScanner.nextInt();
+        boolean fl = true;
+        String checkS;
+        Integer checkI = null;
+        do {
+            System.out.print("\nВведите число -> ");
+            checkS = stringScanner.nextLine();
+            if (!checkS.matches("[1239]")) {
+                System.out.println("\tВведено неверное значение.");
+            } else {
+                checkI = Integer.valueOf(checkS);
+                fl = false;
+            }
+        } while (fl);
+        return checkI;
+    }
+
+    public Integer scan_0() {
+        boolean fl = true;
+        String checkS;
+        Integer checkI = null;
+        do {
+            System.out.print("\nВведите число -> ");
+            checkS = stringScanner.nextLine();
+            if (!checkS.matches("[19]")) {
+                System.out.println("\tВведено неверное значение.");
+            } else {
+                checkI = Integer.valueOf(checkS);
+                fl = false;
+            }
+        } while (fl);
+        return checkI;
     }
 
     public String scan_2() {
@@ -35,13 +66,18 @@ public class Scans implements ViewInterface {
         System.out.print("3. Порода животного:");
         System.out.print("""
                  Если информация о точной разновидности отсутствует,
-                 \tукажите 'беспородная', при смешанной породе укажите 'метис'.
+                 \tукажите 'Беспородная', при смешанной породе укажите 'Метис'.
                 """);
+        System.out.println("\tДля быстрого ввода можно ввести цифры:");
+        System.out.println("\tБеспородная - - - - - - - - - - - нажмите '1'");
+        System.out.println("\tМетис - - - - - - - - - - - - - - нажмите '2'");
         System.out.print("Введите породу животного -> ");
         String check = stringScanner.nextLine();
-        if (check.length() < 3) {
-            String s = "- Порода животного задана не верно. Введено: " + check + "\n";
-            fileJson.setFillingErrorList(s);
+        if (!(check.matches("[12]"))) {
+            if (check.length() < 3) {
+                String s = "- Порода животного задана не верно. Введено: " + check + "\n";
+                fileJson.setFillingErrorList(s);
+            }
         }
         return check;
     }
@@ -57,8 +93,14 @@ public class Scans implements ViewInterface {
     }
 
     public String scan_6() {
-        System.out.print("5. Введите день рождение животного, формат записи год-месяц-день (1999-12-01) -> ");
-        return stringScanner.nextLine();
+        System.out.print("5. Введите день рождение животного, формат записи год-месяц-день: " +
+                "\n\tгод от 1999 до 2024, например (1999-12-01) -> ");
+        String check = stringScanner.nextLine();
+        if (!checkScan_6(check)) {
+            String s = "- День рождение животного задан не верно, формат записи год-месяц-день (1999-12-01). Введено: " + check + "\n";
+            fileJson.setFillingErrorList(s);
+        }
+        return check;
     }
 
     public String scan_7() {
@@ -77,9 +119,7 @@ public class Scans implements ViewInterface {
     public String scan_10(Integer num) {
         boolean fl = true;
         String n;
-        String str = "Для удалении записи, " +
-                "\nвведите порядковый номер записи из списка реестра от 1 до "
-                + num.toString() + "\nили введите '0' для выхода в главное меню" + " -> ";
+        String str = "Для удалении записи, " + "\nвведите порядковый номер записи из списка реестра от 1 до " + num.toString() + "\nили введите '0' для выхода в главное меню" + " -> ";
         do {
             System.out.print(str);
             n = stringScanner.nextLine();
@@ -96,6 +136,24 @@ public class Scans implements ViewInterface {
             }
         } while (fl);
         return n;
+    }
+
+    boolean checkScan_6(@NotNull String s) {
+        boolean fl;
+        int index0, index1, index2;
+        String[] ss = s.split("-");
+
+        if (ss.length == 3) {
+            fl = ss[0].matches("[0-9]+") & ss[1].matches("[0-9]+") & ss[2].matches("[0-9]+");
+        } else fl = false;
+
+        if (fl) {
+            index0 = Integer.parseInt(ss[0]);
+            index1 = Integer.parseInt(ss[1]);
+            index2 = Integer.parseInt(ss[2]);
+            fl = (index0 > 1998 & index0 <= 2024) & (index1 >= 1 & index1 <= 12) & (index2 >= 1 & index2 <= 31);
+        }
+        return fl;
     }
 
 }

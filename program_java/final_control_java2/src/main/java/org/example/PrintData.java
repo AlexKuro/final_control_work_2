@@ -35,13 +35,14 @@ public class PrintData implements ViewInterface {
         String birthday = "birthday";
         String other = "other";
         String a = (String) ((JSONObject) fileJson.getData().get(s)).get(classAn);
+        String b = (String) ((JSONObject) fileJson.getData().get(s)).get(breed);
 
         System.out.println("\t--------------------- " + i + " ---------------------");
         System.out.println("\t   Номер клейма животного: " + ((JSONObject) fileJson.getData().get(s)).get(stamp_number));
         System.out.println("\tДата регистрации карточки: " + date);
         System.out.println("\t          Класс животного: " + classAnimal(a));
         System.out.println("\t            Тип животного: " + ((JSONObject) fileJson.getData().get(s)).get(type));
-        System.out.println("\t         Порода животного: " + ((JSONObject) fileJson.getData().get(s)).get(breed));
+        System.out.println("\t         Порода животного: " + typeAnimal(b));
         System.out.println("\t            Пол животного: " + ((JSONObject) fileJson.getData().get(s)).get(sex));
         System.out.println("\t  День рождение животного: " + ((JSONObject) fileJson.getData().get(s)).get(birthday));
         System.out.println("\t        Прочая информация: " + ((JSONObject) fileJson.getData().get(s)).get(other));
@@ -57,12 +58,21 @@ public class PrintData implements ViewInterface {
         System.out.println("\t---------------------------------------------");
     }
 
-    static String classAnimal(@NotNull String a) {
+    static @NotNull String classAnimal(@NotNull String a) {
         if (a.equals("1")) {
             return "Домашние животное";
         } else if (a.equals("2")) {
             return "Вьючное животное";
         }
         return "Не определено";
+    }
+
+    static @NotNull String typeAnimal(@NotNull String a) {
+        if (a.equals("1")) {
+            return "Беспородная";
+        } else if (a.equals("2")) {
+            return "Метис";
+        }
+        return a;
     }
 }

@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 @Data
 @AllArgsConstructor
@@ -39,7 +38,6 @@ public class FileJson implements ViewInterface {
             }
         } catch (IOException e) {
             log.setLogger("Ошибка при вводе/выводе данных из файла!");
-            e.printStackTrace();
         } finally {
             animalCount = (long) data.get("animalCount");
         }
@@ -51,7 +49,6 @@ public class FileJson implements ViewInterface {
             data = (JSONObject) jsonParser.parse(reader);
         } catch (IOException | ParseException e) {
             log.setLogger("Ошибка при вводе/выводе данных из файла!");
-            e.printStackTrace();
         }
     }
 
@@ -61,10 +58,10 @@ public class FileJson implements ViewInterface {
 
     public void writeFile() {
         try (FileWriter fileWriter = new FileWriter(file)) {
-            if (fillingErrorList.length() > 0) {
+            if (!fillingErrorList.isEmpty()) {
                 throw new RuntimeException("Ошибка при заполнении карточки. \n" + fillingErrorList);
             } else {
-
+                flagFillingErrorList = false;
                 fileWriter.write(data.toJSONString());
             }
         } catch (RuntimeException e) {
@@ -72,16 +69,15 @@ public class FileJson implements ViewInterface {
             System.out.println(e.getMessage());
             flagFillingErrorList = true;
             fillingErrorList = "";
-            System.out.println("Заполните карточку занова, с учетом допущенных ошибок.");
+            System.out.println("Заполните карточку заново, с учетом допущенных ошибок.");
         } catch (IOException e) {
             log.setLogger(e.getMessage());
-            e.printStackTrace();
         }
     }
 
     public void AddWriteFile(String key, java.util.Map<String, Object> value) {
         try (FileWriter fileWriter = new FileWriter(file)) {
-            if (fillingErrorList.length() > 0) {
+            if (!fillingErrorList.isEmpty()) {
                 data.remove(key);
                 fileWriter.write(data.toJSONString());
                 throw new RuntimeException("\n\t---------------------------------------------"
@@ -95,6 +91,7 @@ public class FileJson implements ViewInterface {
                 animalCount = (long) data.get("animalCount");
                 System.out.println("Запись сохранена.");
             }
+
         } catch (RuntimeException e) {
             log.setLogger(e.getMessage());
             System.out.println(e.getMessage());
@@ -103,16 +100,7 @@ public class FileJson implements ViewInterface {
             System.out.println("Заполните карточку заново, с учетом допущенных ошибок.\n");
         } catch (IOException e) {
             log.setLogger(e.getMessage());
-            e.printStackTrace();
         }
-    }
-
-    public void addJson(String key, java.util.Map<String, Object> value) {
-        data.put(key, value);
-        data.put("animalCount", animalCount + 1);
-        writeFile();
-        animalCount = (long) data.get("animalCount");
-        System.out.println("Запись сохранена.");
     }
 
     public void delJson() {
