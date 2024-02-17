@@ -33,6 +33,7 @@ public class PrintData implements ViewInterface {
         String breed = "breed";
         String sex = "sex";
         String birthday = "birthday";
+        String command = "command";
         String other = "other";
         String a = (String) ((JSONObject) fileJson.getData().get(s)).get(classAn);
         String b = (String) ((JSONObject) fileJson.getData().get(s)).get(breed);
@@ -45,6 +46,7 @@ public class PrintData implements ViewInterface {
         System.out.println("\t         Порода животного: " + typeAnimal(b));
         System.out.println("\t            Пол животного: " + ((JSONObject) fileJson.getData().get(s)).get(sex));
         System.out.println("\t  День рождение животного: " + ((JSONObject) fileJson.getData().get(s)).get(birthday));
+        System.out.println("\t                  Команды: " + ((JSONObject) fileJson.getData().get(s)).get(command));
         System.out.println("\t        Прочая информация: " + ((JSONObject) fileJson.getData().get(s)).get(other));
     }
 

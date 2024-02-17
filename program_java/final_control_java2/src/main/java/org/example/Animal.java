@@ -19,6 +19,7 @@ public class Animal implements ViewInterface {
             dataS.put("breed", SCANS.scan_4());     // порода животного
             dataS.put("sex", SCANS.scan_5());       // пол животного
             dataS.put("birthday", SCANS.scan_6());  // день рождение животного
+            dataS.put("command", SCANS.scan_9());   // команды
             dataS.put("other", SCANS.scan_7());     // прочая информация
             fileJson.AddWriteFile(nameKey, dataS);
             if (fileJson.getFlagFillingErrorList()) {

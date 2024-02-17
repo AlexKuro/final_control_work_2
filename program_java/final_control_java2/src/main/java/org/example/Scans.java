@@ -116,6 +116,12 @@ public class Scans implements ViewInterface {
         return stringScanner.nextLine();
     }
 
+    public String scan_9() {
+        System.out.print("6. Введите команды через 'пробел', которая знает животное. -> ");
+        return stringScanner.nextLine();
+    }
+
+
     public String scan_10(Integer num) {
         boolean fl = true;
         String n;
