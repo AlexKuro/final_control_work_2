@@ -11,7 +11,7 @@ public class Scans implements ViewInterface {
         do {
             System.out.print("\nВведите число -> ");
             checkS = stringScanner.nextLine();
-            if (!checkS.matches("[1239]")) {
+            if (!checkS.matches("[12349]")) {
                 System.out.println("\tВведено неверное значение.");
             } else {
                 checkI = Integer.valueOf(checkS);
@@ -122,10 +122,56 @@ public class Scans implements ViewInterface {
     }
 
 
-    public String scan_10(Integer num) {
+    public String scan_10(@NotNull Integer num) {
         boolean fl = true;
         String n;
         String str = "Для удалении записи, " + "\nвведите порядковый номер записи из списка реестра от 1 до " + num.toString() + "\nили введите '0' для выхода в главное меню" + " -> ";
+        do {
+            System.out.print(str);
+            n = stringScanner.nextLine();
+            try {
+                Integer.valueOf(n);
+                int t = Integer.parseInt(n);
+                if (t >= 0 & t <= num) {
+                    fl = false;
+                } else {
+                    System.out.print("Формат ввода неверный!\n" + str + "\n");
+                }
+            } catch (NumberFormatException e) {
+                System.out.print("Формат ввода неверный!\n" + str + "\n");
+            }
+        } while (fl);
+        return n;
+    }
+
+    public String scan_11() {
+        System.out.println("\tВыберите из списка команду для обучения:");
+        System.out.print("\t1. Лежать\t2. Бежать\t3. Прыгать\n" +
+                "\t4. Стоять\t5. Бррр  \t6. Апорт\n" +
+                "\t7. Замереть\t8. Молчать\t9. Голос\n" +
+                " - Какой командой необходимо обучить животное? -");
+
+        String check;
+        boolean fl = true;
+        do {
+            System.out.print("\nВведите число -> ");
+            check = stringScanner.nextLine();
+            if (!check.matches("[123456789]")) {
+                System.out.println("\tВведено неверное значение.");
+            } else {
+
+                fl = false;
+            }
+        } while (fl);
+        return check;
+    }
+
+    public String scan_12(@NotNull Integer num) {
+        boolean fl = true;
+        String n;
+        System.out.println("\t - - Второй этап. - - ");
+        System.out.println("\tВыберите животное для обучения:");
+        String str = "Для обучения командам, " + "\nвведите порядковый номер записи из списка реестра от 1 до " + num.toString() + "\nили введите '0' для выхода в главное меню" + " -> ";
         do {
             System.out.print(str);
             n = stringScanner.nextLine();

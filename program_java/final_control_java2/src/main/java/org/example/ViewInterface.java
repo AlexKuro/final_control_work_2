@@ -15,4 +15,5 @@ public interface ViewInterface {
     ViewSign viewSign = new ViewSign();
     Animal animal = new Animal();
     PrintData printData = new PrintData();
+    Command command = new Command();
 }

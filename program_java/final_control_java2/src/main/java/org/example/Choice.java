@@ -31,6 +31,11 @@ public class Choice implements ViewInterface {
                 animal.delAnimal();
                 view.setFieldNum(0);
             }
+            case 4 -> {
+                command.addCommand();
+
+                view.setFieldNum(0);
+            }
             case 9 -> app.endProgram();
             default -> System.out.print("Формат ввода неверный!\n");
         }

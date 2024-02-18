@@ -23,6 +23,7 @@ public class View implements ViewInterface{
         System.out.println("\tДобавление животного  - - - - - - нажмите '1'");
         System.out.println("\tСписок животных - - - - - - - - - нажмите '2'");
         System.out.println("\tУдаление записи - - - - - - - - - нажмите '3'");
+        System.out.println("\tОбучение командам - - - - - - - - нажмите '4'");
         System.out.println("\tВыход из программы  - - - - - - - нажмите '9'");
         return SCANS.scan_1();
     }
@@ -49,5 +50,8 @@ public class View implements ViewInterface{
     public void interface_4() {
         System.out.println(viewSign.SignField(getFieldNum()));
     }
+
+
+
 
 }
