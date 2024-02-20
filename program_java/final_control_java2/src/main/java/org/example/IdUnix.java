@@ -1,20 +1,10 @@
 package org.example;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.time.Instant;
 import java.util.Date;
 import java.util.Random;
 
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class IdUnix {
-    private long unixTimestamp;
-
     public long date() {
         return Instant.now().getEpochSecond();
     }

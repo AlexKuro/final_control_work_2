@@ -2,7 +2,6 @@ package org.example;
 
 import org.jetbrains.annotations.NotNull;
 
-
 public class Scans implements ViewInterface {
 
     public Integer scan_1() {

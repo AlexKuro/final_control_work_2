@@ -1,8 +1,6 @@
 package org.example;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -11,10 +9,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class FileJson implements ViewInterface {
 
     private long animalCount;
@@ -22,7 +17,7 @@ public class FileJson implements ViewInterface {
     String pathProject = System.getProperty("user.dir");
     String pathFile = pathProject.concat("/file.json");
     File file = new File(pathFile);
-    private Boolean flagFillingErrorList = false;
+    Boolean flagFillingErrorList = false;
 
     private String fillingErrorList = "";
 

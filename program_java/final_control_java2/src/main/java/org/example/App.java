@@ -1,16 +1,27 @@
 package org.example;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 
 public class App implements ViewInterface {
+
     private Boolean flag;
     private Boolean fl1 = true;
+
+    public Boolean getFl1() {
+        return fl1;
+    }
+
+    public void setFl1(Boolean fl1) {
+        this.fl1 = fl1;
+    }
+
+    public Boolean getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Boolean flag) {
+        this.flag = flag;
+    }
+
     public static void Start() {
         fileJson.fileDataJson();
         log.log();
@@ -23,8 +34,7 @@ public class App implements ViewInterface {
 
             if (fileJson.getAnimalCount() > 1) {
                 choice.choice_0(view.interface_main());
-            }
-            else {
+            } else {
                 choice.choice_0_1(view.interface_main_1());
             }
         } while (app.end());

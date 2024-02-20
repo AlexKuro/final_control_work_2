@@ -1,16 +1,9 @@
 package org.example;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.IOException;
 import java.util.logging.*;
 
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Log {
     Logger logger = Logger.getLogger(App.class.getName());
 

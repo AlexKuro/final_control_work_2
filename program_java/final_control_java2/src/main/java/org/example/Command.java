@@ -1,18 +1,8 @@
 package org.example;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
-import java.util.ArrayList;
 
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Command implements ViewInterface {
-    public ArrayList<String> commandList = new ArrayList<>();
-
     public void addCommand() {
         String[] str = printData.arrayKey().clone();
         view.setFieldNum(6);

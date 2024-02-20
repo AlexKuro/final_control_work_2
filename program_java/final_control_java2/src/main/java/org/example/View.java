@@ -1,16 +1,16 @@
 package org.example;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+import lombok.Getter;
 
-public class View implements ViewInterface{
+@Getter
+public class View implements ViewInterface {
 
     private Integer fieldNum = 0;
+
+    public void setFieldNum(Integer fieldNum) {
+        this.fieldNum = fieldNum;
+    }
 
     public void interface_0() {
         System.out.print("\033[H\033[2J"); // очистка консоли
@@ -46,12 +46,8 @@ public class View implements ViewInterface{
         System.out.println(viewSign.SignField(getFieldNum()));
     }
 
-
     public void interface_4() {
         System.out.println(viewSign.SignField(getFieldNum()));
     }
-
-
-
 
 }
