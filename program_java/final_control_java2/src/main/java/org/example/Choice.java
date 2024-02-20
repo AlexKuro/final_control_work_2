@@ -32,6 +32,8 @@ public class Choice implements ViewInterface {
                 view.setFieldNum(0);
             }
             case 4 -> {
+                view.setFieldNum(5);
+                view.interface_2();
                 command.addCommand();
 
                 view.setFieldNum(0);

@@ -4,33 +4,35 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
+
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Command implements ViewInterface {
-    private ArrayList<String> command = new ArrayList<>();
+    public ArrayList<String> commandList = new ArrayList<>();
 
     public void addCommand() {
-        view.setFieldNum(5);
-        view.interface_2();
-        String[] s = printData.arrayKey().clone();
+        String[] str = printData.arrayKey().clone();
         view.setFieldNum(6);
         view.interface_4();
-        String command = SCANS.scan_11();
+        String commandNum = SCANS.scan_11();
         view.setFieldNum(7);
         view.interface_4();
         view.setFieldNum(2);
         view.interface_4();
         printData.printJson();
-        int animalCommand = Integer.parseInt(SCANS.scan_12(s.length)) - 1;
+        int animalCommand = Integer.parseInt(SCANS.scan_12(str.length)) - 1;
+        String s = fileJson.setCommand(str[animalCommand]) + " " + printCommand(commandNum);
+        fileJson.addCommand(str[animalCommand], s);
+        fileJson.writeFile();
+        SCANS.scan_empty();
 
         if (animalCommand > 0) {
             System.out.println("\t---------------------------------------------");
             System.out.println("\tОбучение выполнено успешно! \n" +
-                    "\tКоманда '" + printCommand(command) + "' выполняется успешно!.");
+                    "\tКоманда '" + printCommand(commandNum) + "' выполняется успешно!.");
             System.out.println("\t---------------------------------------------");
         }
     }

@@ -2,6 +2,7 @@ package org.example;
 
 import org.jetbrains.annotations.NotNull;
 
+
 public class Scans implements ViewInterface {
 
     public Integer scan_1() {
@@ -12,7 +13,7 @@ public class Scans implements ViewInterface {
             System.out.print("\nВведите число -> ");
             checkS = stringScanner.nextLine();
             if (!checkS.matches("[12349]")) {
-                System.out.println("\tВведено неверное значение.");
+                System.out.print("\tВведено неверное значение.");
             } else {
                 checkI = Integer.valueOf(checkS);
                 fl = false;
@@ -125,7 +126,10 @@ public class Scans implements ViewInterface {
     public String scan_10(@NotNull Integer num) {
         boolean fl = true;
         String n;
-        String str = "Для удалении записи, " + "\nвведите порядковый номер записи из списка реестра от 1 до " + num.toString() + "\nили введите '0' для выхода в главное меню" + " -> ";
+        String str = "Для удалении записи, "
+                + "\nвведите порядковый номер записи из списка реестра от 1 до "
+                + num
+                + "\nили введите '0' для выхода в главное меню" + " -> ";
         do {
             System.out.print(str);
             n = stringScanner.nextLine();
@@ -146,10 +150,11 @@ public class Scans implements ViewInterface {
 
     public String scan_11() {
         System.out.println("\tВыберите из списка команду для обучения:");
-        System.out.print("\t1. Лежать\t2. Бежать\t3. Прыгать\n" +
-                "\t4. Стоять\t5. Бррр  \t6. Апорт\n" +
-                "\t7. Замереть\t8. Молчать\t9. Голос\n" +
-                " - Какой командой необходимо обучить животное? -");
+        System.out.print("""
+                \t1. Лежать\t2. Бежать\t3. Прыгать
+                \t4. Стоять\t5. Бррр  \t6. Апорт
+                \t7. Замереть\t8. Молчать\t9. Голос
+                 - Какой командой необходимо обучить животное? -""");
 
         String check;
         boolean fl = true;
@@ -171,7 +176,7 @@ public class Scans implements ViewInterface {
         String n;
         System.out.println("\t - - Второй этап. - - ");
         System.out.println("\tВыберите животное для обучения:");
-        String str = "Для обучения командам, " + "\nвведите порядковый номер записи из списка реестра от 1 до " + num.toString() + "\nили введите '0' для выхода в главное меню" + " -> ";
+        String str = "Для обучения командам, " + "\nвведите порядковый номер записи из списка реестра от 1 до " + num + "\nили введите '0' для выхода в главное меню" + " -> ";
         do {
             System.out.print(str);
             n = stringScanner.nextLine();
@@ -203,6 +208,11 @@ public class Scans implements ViewInterface {
             fl = (ind[0] > 1998 & ind[0] <= 2024) & (ind[1] >= 1 & ind[1] <= 12) & (ind[2] >= 1 & ind[2] <= 31);
         }
         return fl;
+    }
+
+    public void scan_empty() {
+        System.out.print("Для продолжения нажмите 'ENTER' -> ");
+        String n = stringScanner.nextLine();
     }
 
 }

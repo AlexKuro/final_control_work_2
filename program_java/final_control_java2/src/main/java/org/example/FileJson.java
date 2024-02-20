@@ -27,6 +27,17 @@ public class FileJson implements ViewInterface {
     private String fillingErrorList = "";
 
 
+    public void addCommand(String com, String r) {
+//       System.out.println(((JSONObject) fileJson.getData().get(str[animalCommand])).get("command"));
+        JSONObject s = (JSONObject) data.get(com);
+        s.put("command", r);
+    }
+
+    public Object setCommand(String com) {
+        JSONObject s = (JSONObject) data.get(com);
+        return s.get("command");
+    }
+
     public void fileDataJson() {
         try {
             if (file.createNewFile()) {
@@ -63,6 +74,7 @@ public class FileJson implements ViewInterface {
             } else {
                 flagFillingErrorList = false;
                 fileWriter.write(data.toJSONString());
+                System.out.println("Запись сохранена.");
             }
         } catch (RuntimeException e) {
             log.setLogger(e.getMessage());
@@ -89,7 +101,7 @@ public class FileJson implements ViewInterface {
                 data.put("animalCount", animalCount + 1);
                 fileWriter.write(data.toJSONString());
                 animalCount = (long) data.get("animalCount");
-                System.out.println("Запись сохранена.");
+
             }
 
         } catch (RuntimeException e) {
