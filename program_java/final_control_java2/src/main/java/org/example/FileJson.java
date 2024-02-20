@@ -28,10 +28,17 @@ public class FileJson implements ViewInterface {
 
 
     public void addCommand(String com, String r) {
-//       System.out.println(((JSONObject) fileJson.getData().get(str[animalCommand])).get("command"));
+//      System.out.println(((JSONObject) fileJson.getData().get(str[animalCommand])).get("command"));
         JSONObject s = (JSONObject) data.get(com);
         s.put("command", r);
     }
+
+    public String viewTypeData(String com) {
+        JSONObject s = (JSONObject) data.get(com);
+        return (String) s.get("class");
+    }
+
+
 
     public Object setCommand(String com) {
         JSONObject s = (JSONObject) data.get(com);

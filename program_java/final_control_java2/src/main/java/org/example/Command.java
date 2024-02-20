@@ -17,17 +17,17 @@ public class Command implements ViewInterface {
         String[] str = printData.arrayKey().clone();
         view.setFieldNum(6);
         view.interface_4();
-        String commandNum = SCANS.scan_11();
+        String commandNum = scans.scan_11();
         view.setFieldNum(7);
         view.interface_4();
         view.setFieldNum(2);
         view.interface_4();
         printData.printJson();
-        int animalCommand = Integer.parseInt(SCANS.scan_12(str.length)) - 1;
+        int animalCommand = Integer.parseInt(scans.scan_12(str.length)) - 1;
         String s = fileJson.setCommand(str[animalCommand]) + " " + printCommand(commandNum);
         fileJson.addCommand(str[animalCommand], s);
         fileJson.writeFile();
-        SCANS.scan_empty();
+        scans.scan_empty();
 
         if (animalCommand > 0) {
             System.out.println("\t---------------------------------------------");

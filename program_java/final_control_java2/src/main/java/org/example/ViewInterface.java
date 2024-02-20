@@ -6,7 +6,7 @@ public interface ViewInterface {
     App app = new App();
     Scanner intScanner = new Scanner(System.in);
     Scanner stringScanner = new Scanner(System.in);
-    Scans SCANS = new Scans();
+    Scans scans = new Scans();
     Log log = new Log();
     View view = new View();
     Choice choice = new Choice();
@@ -16,4 +16,6 @@ public interface ViewInterface {
     Animal animal = new Animal();
     PrintData printData = new PrintData();
     Command command = new Command();
+    PackAnimals packAnimals = new PackAnimals();
+    Pets pets = new Pets();
 }
