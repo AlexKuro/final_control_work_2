@@ -9,18 +9,17 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+
 @Data
 public class FileJson implements ViewInterface {
 
-    private long animalCount;
+    private long animalCount; // счетчик животных
     private JSONObject data = new JSONObject();
+    private String fillingErrorList = "";
     String pathProject = System.getProperty("user.dir");
     String pathFile = pathProject.concat("/file.json");
-    File file = new File(pathFile);
     Boolean flagFillingErrorList = false;
-
-    private String fillingErrorList = "";
-
+    File file = new File(pathFile);
 
     public void addCommand(String com, String r) {
 //      System.out.println(((JSONObject) fileJson.getData().get(str[animalCommand])).get("command"));
@@ -32,8 +31,6 @@ public class FileJson implements ViewInterface {
         JSONObject s = (JSONObject) data.get(com);
         return (String) s.get("class");
     }
-
-
 
     public Object setCommand(String com) {
         JSONObject s = (JSONObject) data.get(com);
@@ -124,5 +121,4 @@ public class FileJson implements ViewInterface {
         System.out.println("Запись удалена.");
         System.out.println("Изменения сохранены.");
     }
-
 }
