@@ -2,13 +2,14 @@ package org.example;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 
 public class Animal implements ViewInterface {
 
     public void addAnimal() {
         do {
-            Map<String, Object> dataS = new HashMap<>();
+            Map<String, Object> dataS = new TreeMap<>();
             long id = idUnix.id();
             long date = idUnix.date();
             String nameKey = "animal_" + id;

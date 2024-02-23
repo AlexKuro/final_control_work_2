@@ -1,18 +1,29 @@
 package org.example;
 
+public class Pets {
+    String birthday;
+    String breed;
+    String classAn;
+    String command;
+    long date;
+    String other;
+    String sex;
+    long stamp_number;
+    String type;
 
-public class Pets implements ViewInterface {
-    Integer countPets;
-
-    public Integer countPetsShow() {
-        countPets = 0;
-        String[] s = printData.arrayKey();
-        for (String string : s) {
-            if (fileJson.viewTypeData(string).equals("1")) {
-                countPets += 1;
-            }
-        }
-        return countPets;
+    public Pets(String birthday, String breed,
+                String classAn, String command,
+                long date, String other,
+                String sex, long stamp_number,
+                String type) {
+        this.birthday = birthday;
+        this.breed = breed;
+        this.classAn = classAn;
+        this.command = command;
+        this.date = date;
+        this.other = other;
+        this.sex = sex;
+        this.stamp_number = stamp_number;
+        this.type = type;
     }
-
 }

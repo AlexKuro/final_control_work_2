@@ -1,16 +1,29 @@
 package org.example;
 
-public class PackAnimals implements ViewInterface {
-    Integer countPackAnimals;
+public class PackAnimals {
+    String birthday;
+    String breed;
+    String classAn;
+    String command;
+    long date;
+    String other;
+    String sex;
+    long stamp_number;
+    String type;
 
-    public Integer countPackAnimalsShow() {
-        countPackAnimals = 0;
-        String[] s = printData.arrayKey();
-        for (String string : s) {
-            if (fileJson.viewTypeData(string).equals("2")) {
-                countPackAnimals += 1;
-            }
-        }
-        return countPackAnimals;
+    public PackAnimals(String birthday, String breed,
+                       String classAn, String command,
+                       long date, String other,
+                       String sex, long stamp_number,
+                       String type) {
+        this.birthday = birthday;
+        this.breed = breed;
+        this.classAn = classAn;
+        this.command = command;
+        this.date = date;
+        this.other = other;
+        this.sex = sex;
+        this.stamp_number = stamp_number;
+        this.type = type;
     }
 }

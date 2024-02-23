@@ -29,8 +29,8 @@ public class App implements ViewInterface {
         view.interface_0();
         do {
             System.out.println("\t\tКоличество животных в питомнике: " + fileJson.getAnimalCount());
-            System.out.println("\t\t\tДомашние животные: " + pets.countPetsShow());
-            System.out.println("\t\t\tВьючные  животные: " + packAnimals.countPackAnimalsShow());
+            System.out.println("\t\t\tДомашние животные: " + petsCount.countPetsShow());
+            System.out.println("\t\t\tВьючные  животные: " + packAnimalsCount.countPackAnimalsShow());
 
             if (fileJson.getAnimalCount() > 1) {
                 choice.choice_0(view.interface_main());
