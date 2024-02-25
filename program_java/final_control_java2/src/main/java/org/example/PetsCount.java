@@ -7,11 +7,9 @@ public class PetsCount implements ViewInterface {
         countPets = 0;
         String[] s = printData.arrayKey();
         for (String string : s) {
-            if (fileJson.viewTypeData(string).equals("1")) {
-                countPets += 1;
-            }
+            if (fileJson.viewTypeData(string).equals("1")) countPets += 1;
+            else pets.getDataPets().remove(string);
         }
         return countPets;
     }
-
 }

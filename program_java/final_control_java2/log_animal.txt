@@ -1,4 +1,4 @@
-февр. 16, 2024 7:39:33 PM org.example.Log setLogger
+февр. 25, 2024 3:22:35 PM org.example.Log setLogger
 INFO: Запуск программы 'Реестр питомника. Домашние и вьючные животные.'
-февр. 16, 2024 7:40:21 PM org.example.Log setLogger
+февр. 25, 2024 3:22:56 PM org.example.Log setLogger
 INFO: Завершение программы 'Реестр питомника. Домашние и вьючные животные.'.

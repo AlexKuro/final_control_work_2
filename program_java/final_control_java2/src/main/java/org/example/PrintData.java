@@ -50,7 +50,6 @@ public class PrintData implements ViewInterface {
         System.out.println("\t        Прочая информация: " + ((JSONObject) fileJson.getData().get(s)).get(other));
     }
 
-
     public void printJson() {
         String[] s = arrayKey().clone();
         for (int i = 0; i < s.length; i++) {

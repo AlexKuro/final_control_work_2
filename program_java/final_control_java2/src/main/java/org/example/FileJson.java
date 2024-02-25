@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Data
 public class FileJson implements ViewInterface {
@@ -63,6 +65,7 @@ public class FileJson implements ViewInterface {
     }
 
     public void setFillingErrorList(String fillingErrorList) {
+
         this.fillingErrorList += fillingErrorList;
     }
 

@@ -16,6 +16,8 @@ public interface ViewInterface {
     Animal animal = new Animal();
     PrintData printData = new PrintData();
     Command command = new Command();
+    PackAnimals packAnimals = new PackAnimals();
+    Pets pets = new Pets();
     PackAnimalsCount packAnimalsCount = new PackAnimalsCount();
     PetsCount petsCount = new PetsCount();
 }
