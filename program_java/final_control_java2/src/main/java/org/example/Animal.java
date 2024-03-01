@@ -1,12 +1,20 @@
 package org.example;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-
+/**
+ * Класс реализует:
+ * - добавления новой карточки животного в общий файл
+ * - удаление карточки животного из общего файла
+ */
 public class Animal implements ViewInterface {
-
+    /**
+     * Метод addAnimal
+     * - добавления новой карточки животного в общий файл
+     *
+     * @return Ничего.
+     */
     public void addAnimal() {
         do {
             Map<String, Object> dataS = new TreeMap<>();
@@ -27,9 +35,14 @@ public class Animal implements ViewInterface {
                 if (scans.scan_8().equals("2")) fileJson.setFlagFillingErrorList(false);
             }
         } while (fileJson.getFlagFillingErrorList());
-
     }
 
+    /**
+     * Метод delAnimal
+     * - удаление карточки животного из общего файла
+     *
+     * @return Ничего.
+     */
     public void delAnimal() {
         String[] s = printData.arrayKey().clone();
         int delNum = Integer.parseInt(scans.scan_10(s.length)) - 1;

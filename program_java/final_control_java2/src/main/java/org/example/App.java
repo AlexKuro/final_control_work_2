@@ -1,20 +1,29 @@
 package org.example;
 
-
+/**
+ * Класс реализует:
+ * Запуск консольной программы.
+ * Выход из программы.
+ */
 public class App implements ViewInterface {
-    private Boolean flag;
-    private Boolean fl1 = true;
-    public Boolean getFl1() {
-        return fl1;
+
+    private Boolean flagMain;
+    private Boolean flagChoiceMenu = true;
+
+    public Boolean getFlagChoiceMenu() {
+        return flagChoiceMenu;
     }
-    public void setFl1(Boolean fl1) {
-        this.fl1 = fl1;
+
+    public void setFlagChoiceMenu(Boolean flagChoiceMenu) {
+        this.flagChoiceMenu = flagChoiceMenu;
     }
-    public Boolean getFlag() {
-        return flag;
+
+    public Boolean getFlagMain() {
+        return flagMain;
     }
-    public void setFlag(Boolean flag) {
-        this.flag = flag;
+
+    public void setFlagMain(Boolean flagMain) {
+        this.flagMain = flagMain;
     }
 
     public static void Start() {
@@ -40,7 +49,7 @@ public class App implements ViewInterface {
     }
 
     Boolean end() {
-        return getFlag();
+        return getFlagMain();
     }
 
     public void endProgram() {
@@ -48,7 +57,5 @@ public class App implements ViewInterface {
         log.setLogger("Завершение программы 'Реестр питомника. Домашние и вьючные животные.'.");
         intScanner.close();
         stringScanner.close();
-        setFlag(false);
-        setFl1(false);
     }
 }

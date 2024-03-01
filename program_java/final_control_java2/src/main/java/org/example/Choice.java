@@ -11,9 +11,9 @@ public class Choice implements ViewInterface {
                     view.setFieldNum(1);
                     view.interface_1();
                     animal.addAnimal();
-                    app.setFl1(false);
+                    app.setFlagChoiceMenu(false);
                     view.setFieldNum(0);
-                } while (app.getFl1());
+                } while (app.getFlagChoiceMenu());
             }
             case 2 -> {
                 view.setFieldNum(2);
@@ -35,7 +35,6 @@ public class Choice implements ViewInterface {
                 view.setFieldNum(5);
                 view.interface_2();
                 command.addCommand();
-
                 view.setFieldNum(0);
             }
             case 9 -> app.endProgram();
@@ -51,9 +50,9 @@ public class Choice implements ViewInterface {
                     view.setFieldNum(1);
                     view.interface_1();
                     animal.addAnimal();
-                    app.setFl1(false);
+                    app.setFlagChoiceMenu(false);
                     view.setFieldNum(0);
-                } while (app.getFl1());
+                } while (app.getFlagChoiceMenu());
             }
             case 9 -> app.endProgram();
             default -> System.out.print("Формат ввода неверный!\n");

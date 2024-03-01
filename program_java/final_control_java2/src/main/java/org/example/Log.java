@@ -1,13 +1,12 @@
 package org.example;
 
-
 import java.io.IOException;
 import java.util.logging.*;
 
 public class Log {
     Logger logger = Logger.getLogger(App.class.getName());
 
-    public void log(){
+    public void log() {
 
         FileHandler fh;
 
@@ -24,7 +23,7 @@ public class Log {
         logger.setUseParentHandlers(false);
     }
 
-    public void setLogger(String message){
+    public void setLogger(String message) {
         logger.info(message);
     }
 

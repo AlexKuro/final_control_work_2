@@ -18,7 +18,7 @@ public class View implements ViewInterface {
     }
 
     public Integer interface_main() {
-        app.setFlag(true);
+        app.setFlagMain(true);
         System.out.println(viewSign.SignField(getFieldNum()));
         System.out.println("\tДобавление животного  - - - - - - нажмите '1'");
         System.out.println("\tСписок животных - - - - - - - - - нажмите '2'");
@@ -29,7 +29,7 @@ public class View implements ViewInterface {
     }
 
     public Integer interface_main_1() {
-        app.setFlag(true);
+        app.setFlagMain(true);
         System.out.println(viewSign.SignField(getFieldNum()));
         System.out.println("\tДобавление животного  - - - - - - нажмите '1'");
         System.out.println("\tВыход из программы  - - - - - - - нажмите '9'");
@@ -37,12 +37,12 @@ public class View implements ViewInterface {
     }
 
     public void interface_1() {
-        app.setFlag(true);
+        app.setFlagMain(true);
         System.out.println(viewSign.SignField(getFieldNum()));
     }
 
     public void interface_2() {
-        app.setFlag(true);
+        app.setFlagMain(true);
         System.out.println(viewSign.SignField(getFieldNum()));
     }
 

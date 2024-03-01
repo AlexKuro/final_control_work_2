@@ -3,6 +3,7 @@ package org.example;
 
 public class PetsCount implements ViewInterface {
     Integer countPets;
+
     public Integer countPetsShow() {
         countPets = 0;
         String[] s = printData.arrayKey();

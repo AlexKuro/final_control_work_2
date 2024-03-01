@@ -1,1 +1,36 @@
-{"animal_2122":{"birthday":"2012-10-09","date":1708862679,"other":"","stamp_number":2122,"sex":"М","type":"Собака","class":"1","breed":"1","command":""},"animal_1740":{"birthday":"2020-12-01","date":1708859590,"other":"Добрая","stamp_number":1740,"sex":"М","type":"Собака","class":"1","breed":"1","command":"Лежать"},"animalCount":3,"animal_9478":{"birthday":"2000-12-10","date":1708859750,"other":"Красивая","stamp_number":9478,"sex":"Ж","type":"кошка","class":"2","breed":"Рысь","command":" Лежать"}}
+{
+  "animal_2122": {
+    "birthday": "2012-10-09",
+    "date": 1708862679,
+    "other": "",
+    "stamp_number": 2122,
+    "sex": "М",
+    "type": "Собака",
+    "class": "1",
+    "breed": "1",
+    "command": ""
+  },
+  "animal_1740": {
+    "birthday": "2020-12-01",
+    "date": 1708859590,
+    "other": "Добрая",
+    "stamp_number": 1740,
+    "sex": "М",
+    "type": "Собака",
+    "class": "1",
+    "breed": "1",
+    "command": "Лежать"
+  },
+  "animalCount": 3,
+  "animal_9478": {
+    "birthday": "2000-12-10",
+    "date": 1708859750,
+    "other": "Красивая",
+    "stamp_number": 9478,
+    "sex": "Ж",
+    "type": "кошка",
+    "class": "2",
+    "breed": "Рысь",
+    "command": " Лежать"
+  }
+}
